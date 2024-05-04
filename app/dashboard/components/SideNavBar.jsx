@@ -103,7 +103,7 @@ export default function SideNavBar() {
             ]}
           />
         </Stack>
-        <UserInfoButton />
+        <UserInfoButton  />
       </CustomeStack>
     </Stack>
   );

@@ -11,14 +11,16 @@ export default function UserInfoButton() {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => {
     document.addEventListener("click", () => {
-      setIsOpen(false);
+      // setIsOpen(false);
       console.log("remove");
+      console.log(isOpen);
       document.removeEventListener("click", () => {
       });
     });
     setIsOpen(!isOpen);
   };
 
+  
   // useEffect(() => {
   //   if (isOpen) {
   //     document.addEventListener("click", () => {
@@ -30,7 +32,7 @@ export default function UserInfoButton() {
   // }, [isOpen, setIsOpen]);
 
   return (
-    <Stack position="relative">
+    <Stack position="relative"  >
       <CustomeStack
         background={"rgba(130,135,140,30%)"}
         smoothCorners={"12"}

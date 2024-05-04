@@ -17,6 +17,7 @@ export default function SignInForm() {
         fullWidth={true}
         smoothCorners={18}
         // width={"300px"}
+        onChange={(e) => console.log(e.target.value)}
         height={50}
         placeholder="Email address or mobile number"
       />
@@ -25,6 +26,7 @@ export default function SignInForm() {
         fullWidth={true}
         backgroundColor={"#000E33"}
         height={"50px"}
+        onClick={() =>alert("Please enter")}
         // width={"300px"}
       >
         Continue to verify

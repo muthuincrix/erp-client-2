@@ -30,6 +30,7 @@ export default function SignUpForm() {
             </InputAdornment>
           ),
         }}
+        onChange={(e) => console.log(e.target.value)}
         fullWidth={true}
         smoothCorners={18}
         // width={"300px"}
