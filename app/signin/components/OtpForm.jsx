@@ -1,12 +1,45 @@
-"use client"
+"use client";
 import OtpInput from "react-otp-input";
 import { SmoothCorners } from "react-smooth-corners";
-import React, { useState } from "react";
+import React, { useState, } from "react";
+import { useRouter } from 'next/navigation'
 import { Stack, Button } from "@mui/material";
 import CustomeButton from "@/app/components/CustomeButton";
 
 export default function OtpForm() {
   const [otp, setOtp] = useState("");
+  const router = useRouter();
+  const handlerVerify = () => {
+    if (otp.length <= 0) return
+    fetch("/user/otp-verify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        otp,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if(data.status == "success") return router.push('/dashboard')
+        
+      });
+  };
+  const resendOtp =() =>{
+    fetch("/user/resend-otp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setOtp('')
+        console.log(data);
+      });
+  }
   return (
     <Stack gap={2}>
       <SmoothCorners style={{ display: "none" }} />
@@ -34,15 +67,18 @@ export default function OtpForm() {
           "-webkit-mask-image": "paint(smooth-corners)",
         }}
       />
+
       <CustomeButton
         smoothCorners={18}
         fullWidth={true}
         backgroundColor={"#0080FF"}
         height={"50px"}
+        onClick={handlerVerify}
         // width={"300px"}
       >
         Continue to verify
       </CustomeButton>
+
       <Stack justifyContent={"center"} alignItems={"center"}>
         <Button
           variant="text"
@@ -57,6 +93,7 @@ export default function OtpForm() {
               background: "none",
             },
           }}
+          onClick={resendOtp}
         >
           Resend OTP in 60 sec
         </Button>

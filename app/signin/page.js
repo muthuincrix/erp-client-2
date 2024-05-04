@@ -16,8 +16,8 @@ export default function SignIn() {
     >
       <Grid container direction={"row"}>
         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
-          <Form />
-          {/* <VerifyForm /> */}
+          {/* <Form /> */}
+          <VerifyForm />
         </Grid>
         <Grid
           item
