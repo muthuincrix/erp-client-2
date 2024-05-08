@@ -9,28 +9,22 @@ import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 
 export default function UserInfoButton() {
   const [isOpen, setIsOpen] = useState(false);
-  const handleClick = () => {
-    document.addEventListener("click", () => {
-      setIsOpen(false);
-      console.log("remove");
-      document.removeEventListener("click", () => {
-      });
-    });
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
     setIsOpen(!isOpen);
   };
 
-  // useEffect(() => {
-  //   if (isOpen) {
-  //     document.addEventListener("click", () => {
-  //       setIsOpen(false);
-  //     });
-  //   } else {
-  //     document.removeEventListener("click", () => {});
-  //   }
-  // }, [isOpen, setIsOpen]);
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
-    <Stack position="relative"  >
+    <Stack position="relative">
       <CustomeStack
         aria-describedby={id}
         background={"rgba(130,135,140,30%)"}
