@@ -83,9 +83,9 @@ export default function SideNavBar() {
             title="Payments"
           />
           <NavButton
-            href={"/dashboard/report"}
+            href={"/dashboard/reports"}
             icon={<Icons.ReportIcon />}
-            title="Report"
+            title="Reports"
           />
           <NavButton
             icon={<Icons.EcomIcon />}

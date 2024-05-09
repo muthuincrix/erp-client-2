@@ -9,14 +9,8 @@ import NotificationsSharpIcon from "@mui/icons-material/NotificationsSharp";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import Icons from "@/util/icons";
 
-const breadcrumbs = [
-  <Typography color={"black"}>Dashboard</Typography>,
-  <Typography color={"black"}>Dashboard</Typography>,
-];
-
 export default function TopNavBar() {
   const router = useRouter();
-
   return (
     <Stack
       margin={"20px 0 0 0"}
@@ -94,11 +88,10 @@ function BreadcrumbsMap() {
   const pathname = usePathname();
   const pathList = pathname.split("/").slice(1);
   const breadcrumbs = pathList.map((item, index) => {
-    console.log(item.search("&") !== -1);
     if (pathList.length > 1 && index == 0) return;
     if (item.search("&") !== -1)
       return (
-        <Typography color={"#888888"}>
+        <Typography color={"#888888"} fontSize={"14px"}>
           {`${
             item.split("&")[0].charAt(0).toUpperCase() +
             item.split("&")[0].slice(1)
@@ -109,7 +102,7 @@ function BreadcrumbsMap() {
         </Typography>
       );
     return (
-      <Typography color={"#888888"}>
+      <Typography color={"#888888"} fontSize={"14px"}>
         {item.charAt(0).toUpperCase() + item.slice(1)}
       </Typography>
     );
@@ -119,10 +112,22 @@ function BreadcrumbsMap() {
       <Icons.DashIcon />
     ) : pathList[1] == "products&services" ? (
       <Icons.ProductIcon />
+    ) : pathList[1] == "invoice" ? (
+      <Icons.InvoiceIcon />
+    ) : pathList[1] == "customers" ? (
+      <Icons.CustomerIcon />
+    ) : pathList[1] == "vendors" ? (
+      <Icons.VendorIcon />
+    ) : pathList[1] == "purchases&expenses" ? (
+      <Icons.PurchaseIcon />
+    ) : pathList[1] == "payments" ? (
+      <Icons.PaymentIcon />
+    ) : pathList[1] == "reports" ? (
+      <Icons.ReportIcon />
     ) : null;
   }
   return (
-    <Stack direction={"row"} alignItems={"center"} gap={2}>
+    <Stack direction={"row"} alignItems={"center"} gap={1}>
       <ConditionalIcon />
       <Breadcrumbs
         separator={

@@ -11,19 +11,7 @@ import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 
 function DashIcon(props) {
-  return (
-    <img
-      {...props}
-      src={dashIcon.src}
-      style={{
-        width: props.width || "20px",
-        height: "auto",
-        objectFit: "contain",
-        objectPosition: "center",
-      }}
-      alt="dash-icon"
-    />
-  );
+  return <img {...props} src={dashIcon.src} alt="dash-icon" />;
 }
 
 function ProductIcon(props) {
