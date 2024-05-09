@@ -3,8 +3,11 @@ import { Stack, Grid } from "@mui/material";
 import Form from "./components/Form";
 import Features from "./components/Features";
 import VerifyForm from "./components/VerifyForm";
+import { useState } from "react";
 
 export default function SignIn() {
+  const [isVerify, setVerify] = useState(false);
+  console.log(setVerify);
   return (
     <main
       style={{
@@ -16,8 +19,7 @@ export default function SignIn() {
     >
       <Grid container direction={"row"}>
         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
-          {/* <Form /> */}
-          <VerifyForm />
+          {isVerify ? <VerifyForm /> : <Form setVerify={setVerify} />}
         </Grid>
         <Grid
           item

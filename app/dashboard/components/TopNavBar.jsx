@@ -8,7 +8,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 export default function TopNavBar() {
   const router = useRouter();
 
-  console.log(window.history.state);
+  
   const breadcrumbs = [
     <Typography color={"black"}>Dashboard</Typography>,
     <Typography color={"black"}>Dashboard</Typography>,

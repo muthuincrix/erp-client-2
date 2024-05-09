@@ -1,10 +1,11 @@
 import CustomeTextField from "@/app/components/CustomeTextField";
 import { Stack, Autocomplete, Checkbox, Popper } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 
-export default function BusinessInfoForm() {
-  const [checked, setChecked] = useState(false);
+export default function BusinessInfoForm({setUpBusinessDetails,businessDetails}) {
+
+  const [checked, setChecked] = useState(businessDetails.orgGST == '' ? false : true);
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
@@ -13,20 +14,37 @@ export default function BusinessInfoForm() {
       <CustomeTextField
         fullWidth={true}
         smoothCorners={18}
+        value ={businessDetails.orgName == '' ? '':  businessDetails.orgName}
         placeholder="Enter Organization name"
+        onChange={(e) => {
+          setUpBusinessDetails(prevState => ({
+            ...prevState, // copy the previous state
+            orgName: e.target.value // update the age field
+        }));
+        }}
       />
       <Autocomplete
         disablePortal
         options={industries}
-        // groupBy={(option) => option.category}
+    value={businessDetails.industryName == '' ? null : businessDetails.industryName}
+        onChange={(event, value) => 
+          setUpBusinessDetails(prevState => ({
+            ...prevState, // copy the previous state
+            industryName: value == null ? '' :value.label  // update the age field
+        }))
+     
+      }
+        //  groupBy={(option) => option.category}
         sx={{ width: "100%" }}
         popupIcon={<KeyboardArrowDownRoundedIcon />}
         renderInput={(params) => (
           <CustomeTextField
+          
             {...params}
             fullWidth={true}
             smoothCorners={18}
             placeholder="Which industry are you in?"
+        
           />
         )}
       />
@@ -34,11 +52,26 @@ export default function BusinessInfoForm() {
         fullWidth={true}
         smoothCorners={18}
         placeholder="Organization phone number"
+        value ={businessDetails.orgPhone == '' ? '':  businessDetails.orgPhone}
+        onChange={(e) => {
+          setUpBusinessDetails(prevState => ({
+            ...prevState, // copy the previous state
+            orgPhone: e.target.value // update the age field
+        }))
+     
+        }}
       />
       <CustomeTextField
         fullWidth={true}
         smoothCorners={18}
         placeholder="Organization email address"
+        value ={businessDetails.orgEmail == '' ? '':  businessDetails.orgEmail}
+        onChange={(e) => {
+          setUpBusinessDetails(prevState => ({
+            ...prevState, // copy the previous state
+            orgEmail: e.target.value // update the age field
+        }))
+        }}
       />
       <Stack gap={1}>
         <Stack direction={"row"} alignItems={"center"}>
@@ -62,11 +95,18 @@ export default function BusinessInfoForm() {
             Is this business registered for GST?
           </p>
         </Stack>
-        {checked && (
+        {checked   && (
           <CustomeTextField
             fullWidth={true}
             smoothCorners={18}
             placeholder="Organization GST"
+            value ={businessDetails.orgGST == '' ? '':  businessDetails.orgGST}
+            onChange={(e) => {
+              setUpBusinessDetails(prevState => ({
+                ...prevState, // copy the previous state
+                orgGST: e.target.value// update the age field
+            }))
+            }}
           />
         )}
       </Stack>

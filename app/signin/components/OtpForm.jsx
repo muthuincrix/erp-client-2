@@ -22,8 +22,9 @@ export default function OtpForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if(data.status == "success") return router.push('/dashboard')
+       if(data.status === "success" && !data.fill_the_details) return router.push('/setup')
+       if(data.status ===  'success' && data.type == 'create') return router.push('/setup')
+       if(data.status == "success" && !data.type ) return router.push('/dashboard')
         
       });
   };

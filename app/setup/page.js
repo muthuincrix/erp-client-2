@@ -3,8 +3,9 @@
 import { Stack } from "@mui/material"
 import GetStarted from "./components/GetStarted"
 import SetupForm from "./components/SetupFrom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 export default function Page(){
+    const [isSetupBusiness,setUpBusiness] = useState(false)
     useEffect(() =>{
         fetch('/expire')
         .then((response) => response.text())
@@ -23,8 +24,13 @@ export default function Page(){
             overflow: "hidden",
             background: "#F2F2F2"
         }}>
-            {/* <GetStarted /> */}
-            <SetupForm />
+            {
+                isSetupBusiness?
+                <SetupForm />
+                :
+                <GetStarted setUpBusiness={setUpBusiness} />
+            }
+          
         </main>
     )
 }

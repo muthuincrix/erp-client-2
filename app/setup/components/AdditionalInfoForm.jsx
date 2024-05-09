@@ -7,31 +7,60 @@ import FemaleIcon from "@mui/icons-material/Female";
 import Avatar from "@/util/avatar";
 import { useState } from "react";
 
-export default function AdditionalInfoForm() {
+export default function AdditionalInfoForm({
+  setUpBusinessDetails,
+  businessDetails,
+}) {
   return (
     <Stack width={"100%"} textAlign={"left"} gap={4}>
-      <LogoUpload />
-      <SelectAvatar />
+      <LogoUpload
+        setUpBusinessDetails={setUpBusinessDetails}
+        businessDetails={businessDetails}
+      />
+      <SelectAvatar
+        setUpBusinessDetails={setUpBusinessDetails}
+        businessDetails={businessDetails}
+      />
     </Stack>
   );
 }
 
-function SelectAvatar() {
-  const [isMale, setIsMale] = useState(true);
-  const [selectedAvatar, setSelectedAvatar] = useState(null);
+function SelectAvatar({ setUpBusinessDetails, businessDetails }) {
+  const [isMale, setIsMale] = useState(businessDetails.gender == 'male' ? true : false);
+  const [selectedAvatar, setSelectedAvatar] = useState(businessDetails.avatar == '' ? null : businessDetails.avatar);
   const activeColor = "#0080FF";
   const inactiveColor = "#999999";
   const maleCharList = ["m1", "m2", "m3", "m4"];
   const femaleCharList = ["f1", "f2", "f3", "f4"];
   const handleMale = () => {
     setIsMale(true);
+    setUpBusinessDetails((prevState) => ({
+      ...prevState,
+      gender: "male",
+    }));
+    setUpBusinessDetails((prevState) => ({
+      ...prevState,
+      avatar: "",
+    }));
     setSelectedAvatar(null);
   };
   const handleFemale = () => {
     setIsMale(false);
+    setUpBusinessDetails((prevState) => ({
+      ...prevState,
+      gender: "female",
+    }));
+    setUpBusinessDetails((prevState) => ({
+      ...prevState,
+      avatar: "",
+    }));
     setSelectedAvatar(null);
   };
   const handleAvatarClick = (char) => {
+    setUpBusinessDetails((prevState) => ({
+      ...prevState,
+      avatar: char,
+    }));
     setSelectedAvatar(char);
   };
   return (
