@@ -2,17 +2,17 @@ import { Stack, Typography } from "@mui/material";
 import CustomeStack from "@/app/components/CustomeStack";
 import NavButton from "./NavButton";
 import { IncrixLogoLight } from "@/util/incrix-logo";
-import {
-  DashIcon,
-  ProductIcon,
-  InvoiceIcon,
-  CustomerIcon,
-  VendorIcon,
-  PurchaseIcon,
-  PaymentIcon,
-  ReportIcon,
-  EcomIcon,
-} from "@/util/icons";
+import Icons from "@/util/icons";
+//   DashIcon,
+//   ProductIcon,
+//   InvoiceIcon,
+//   CustomerIcon,
+//   VendorIcon,
+//   PurchaseIcon,
+//   PaymentIcon,
+//   ReportIcon,
+//   EcomIcon,
+// } from "@/util/icons";
 import UserInfoButton from "./UserInfoButton";
 
 export default function SideNavBar() {
@@ -49,46 +49,46 @@ export default function SideNavBar() {
         >
           <NavButton
             href={"/dashboard"}
-            icon={<DashIcon />}
+            icon={<Icons.DashIcon />}
             title="Dashboard"
           />
           <NavButton
             href={"/dashboard/products&services"}
-            icon={<ProductIcon />}
+            icon={<Icons.ProductIcon />}
             title="Products & Services"
           />
           <NavButton
             href={"/dashboard/invoice"}
-            icon={<InvoiceIcon />}
+            icon={<Icons.InvoiceIcon />}
             title="Invoice"
           />
           <NavButton
             href={"/dashboard/customers"}
-            icon={<CustomerIcon />}
+            icon={<Icons.CustomerIcon />}
             title="Customers"
           />
           <NavButton
             href={"/dashboard/vendors"}
-            icon={<VendorIcon />}
+            icon={<Icons.VendorIcon />}
             title="Vendors"
           />
           <NavButton
             href={"/dashboard/purchases&expenses"}
-            icon={<PurchaseIcon />}
+            icon={<Icons.PurchaseIcon />}
             title="Purchases & Expenses"
           />
           <NavButton
             href={"/dashboard/payments"}
-            icon={<PaymentIcon />}
+            icon={<Icons.PaymentIcon />}
             title="Payments"
           />
           <NavButton
             href={"/dashboard/report"}
-            icon={<ReportIcon />}
+            icon={<Icons.ReportIcon />}
             title="Report"
           />
           <NavButton
-            icon={<EcomIcon />}
+            icon={<Icons.EcomIcon />}
             title="E-Commerce"
             isChild={true}
             childNavList={[
