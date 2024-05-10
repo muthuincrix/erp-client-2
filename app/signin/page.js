@@ -3,9 +3,21 @@ import { Stack, Grid } from "@mui/material";
 import Form from "./components/Form";
 import Features from "./components/Features";
 import VerifyForm from "./components/VerifyForm";
-
+import { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation'
 export default function SignIn() {
-  return (
+  const [isVerify, setVerify] = useState(false);
+  const router = useRouter();
+  const [isLoading, setLoading] = useState(false)
+  useEffect(() =>{
+    fetch('/user-isLogin')
+    .then((response) => response.json())
+    .then((data) => {
+        if(data.status === 'success' && data.isLogin) return router.push('/dashboard')
+        setLoading(true)
+    })
+},[])
+  return isLoading && (
     <main
       style={{
         maxWidth: "1600px",
@@ -16,8 +28,7 @@ export default function SignIn() {
     >
       <Grid container direction={"row"}>
         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
-          {/* <Form /> */}
-          <VerifyForm />
+          {isVerify ? <VerifyForm /> : <Form setVerify={setVerify} />}
         </Grid>
         <Grid
           item

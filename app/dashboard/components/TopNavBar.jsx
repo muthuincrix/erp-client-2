@@ -14,7 +14,12 @@ import MasterAddButton from "./MasterAddButton";
 
 export default function TopNavBar() {
   const router = useRouter();
- 
+
+  
+  const breadcrumbs = [
+    <Typography color={"black"}>Dashboard</Typography>,
+    <Typography color={"black"}>Dashboard</Typography>,
+  ];
   return (
     <Stack
       margin={"20px 0 0 0"}
