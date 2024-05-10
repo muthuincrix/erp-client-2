@@ -5,7 +5,8 @@ import CustomeTextField from "@/app/components/CustomeTextField";
 import atIcon from "../../../public/icons/at.png";
 import { useState } from "react";
 
-export default function SignInForm() {
+export default function SignInForm({setVerify}) {
+ 
   const [email, setEmail] = useState("");
   const handlerVerify = () => {
     if (email.length > 0)
@@ -19,7 +20,11 @@ export default function SignInForm() {
         }),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          console.log(data);
+          if(data.status === 'success') setVerify(true)
+    
+        });
   };
   return (
     <Stack gap={2}>

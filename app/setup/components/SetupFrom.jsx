@@ -2,10 +2,11 @@
 import { Stack, Stepper, Step, StepLabel } from "@mui/material";
 import PropTypes from "prop-types";
 import { styled } from "@mui/material/styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import incrixLogo from "@/public/images/incrix-logo.png";
 import CustomeStack from "@/app/components/CustomeStack";
 import CustomeButton from "@/app/components/CustomeButton";
+import { useRouter } from 'next/navigation'
 import StepConnector, {
   stepConnectorClasses,
 } from "@mui/material/StepConnector";
@@ -88,6 +89,23 @@ ColorlibStepIcon.propTypes = {
 
 export default function SetupForm() {
   const [activeStep, setActiveStep] = useState(0);
+  const router = useRouter();
+  const [businessDetails, setUpBusinessDetails] = useState({
+    orgName: "",
+    industryName: "",
+    orgPhone: "",
+    orgEmail: "",
+    orgAddress: "",
+    orgGST: "",
+    orgAddress_1: "",
+    orgAddress_2: "",
+    city: "",
+    state: "",
+    pincode: "",
+    orgLogo: "",
+    avatar: "",
+    gender: "male",
+  });
   const steps = ["Business info", "Address", "Additional info"];
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -95,6 +113,44 @@ export default function SetupForm() {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+
+
+  const checkTheBusinessState = (prop) => {
+    if (
+      prop.orgName !== "" &&
+      prop.industryName !== "" &&
+      prop.orgPhone !== "" &&
+      prop.orgEmail !== ""
+    ) return false
+    else return true;
+  };
+
+  const checkTheAddress = (prop) =>{
+    if (
+      prop.orgAddress_1 !== "" &&
+      prop.orgAddress_2 !== "" &&
+      prop.city !== "" &&
+      prop.state !== "" && prop.pincode !== ""
+    ) return false
+    else return true;
+  }
+  const checkTheAdditionalInfo = (prop) => {
+    if (prop.avatar!== "") return false
+    else return true;
+  }
+  const handleSummitDetails = () =>{
+    fetch('/user/create-profile',{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(businessDetails)
+    })
+    .then(res => res.json())
+    .then((data) =>{
+      if(data.status == "success") return router.push('/dashboard')
+    })
+  }
   return (
     <CustomeStack
       smoothCorners={"26"}
@@ -154,9 +210,9 @@ export default function SetupForm() {
         ))}
       </Stepper>
       <Stack width={"100%"}>
-        {activeStep == 0 && <BusinessInfoForm />}
-        {activeStep == 1 && <AddressForm />}
-        {activeStep == 2 && <AdditionalInfoForm />}
+        {activeStep == 0 && <BusinessInfoForm  setUpBusinessDetails={setUpBusinessDetails} businessDetails={businessDetails}  />}
+        {activeStep == 1 && <AddressForm setUpBusinessDetails={setUpBusinessDetails} businessDetails={businessDetails}  />}
+        {activeStep == 2 && <AdditionalInfoForm setUpBusinessDetails={setUpBusinessDetails} businessDetails={businessDetails}  />}
       </Stack>
       <Stack
         width={"100%"}
@@ -182,15 +238,18 @@ export default function SetupForm() {
             smoothCorners="6"
             backgroundColor={"#0080FF"}
             margin={"0 0 0 auto"}
+            disabled={activeStep == 0 ? checkTheBusinessState(businessDetails) : activeStep == 1 ? checkTheAddress(businessDetails) : null}
           >
             Next
           </CustomeButton>
         )}
         {activeStep == 2 && (
           <CustomeButton
+          disabled={checkTheAdditionalInfo(businessDetails)}
             smoothCorners="6"
             backgroundColor={"#0080FF"}
             margin={"0 0 0 auto"}
+            onClick={handleSummitDetails}
           >
             Finish
           </CustomeButton>

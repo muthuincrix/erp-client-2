@@ -3,15 +3,23 @@
 import { Stack } from "@mui/material"
 import GetStarted from "./components/GetStarted"
 import SetupForm from "./components/SetupFrom"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { useRouter } from 'next/navigation'
 export default function Page(){
+    const [isSetupBusiness,setUpBusiness] = useState(false)
+    const router = useRouter();
+    const [isLoading, setLoading] = useState(false)
     useEffect(() =>{
-        fetch('/expire')
-        .then((response) => response.text())
-        .then((data) => console.log(data))
-        console.log("setup page")
+      fetch('/user-isLogin')
+      .then((response) => response.json())
+      .then((data) => {
+          if(data.status === 'success' && data.fill_the_details) return setLoading(true)
+          if(data.status === 'error' && !data.isLogin ) return router.push('/signin')
+          if(data.status === 'success' && data.isLogin && !data.fill_the_details) return router.push('/dashboard')
+          setLoading(true)
+      })
     },[])
-    return(
+    return isLoading &&(
         <main style={{
             width: '100%',
             height: "100vh",
@@ -23,8 +31,13 @@ export default function Page(){
             overflow: "hidden",
             background: "#F2F2F2"
         }}>
-            {/* <GetStarted /> */}
-            <SetupForm />
+            {
+                isSetupBusiness?
+                <SetupForm />
+                :
+                <GetStarted setUpBusiness={setUpBusiness} />
+            }
+          
         </main>
     )
 }

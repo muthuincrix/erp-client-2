@@ -3,7 +3,7 @@ import incrixLogo from "@/public/images/incrix-logo.png";
 import { Stack, Typography } from "@mui/material";
 import CustomeButton from "@/app/components/CustomeButton";
 
-export default function GetStarted() {
+export default function GetStarted({setUpBusiness}) {
   return (
     <Stack alignItems={"center"} gap={4} padding={"0 20px"}>
       <img
@@ -67,6 +67,7 @@ export default function GetStarted() {
             xl: "300px",
         }}
         backgroundColor={"#000E33"}
+        onClick={() => setUpBusiness(true)}
       >
         Setup Business
       </CustomeButton>

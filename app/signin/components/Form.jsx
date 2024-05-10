@@ -4,7 +4,8 @@ import SignUpForm from "./SignupForm";
 import incrixLogo from "@/public/images/incrix-logo.png";
 import Link from "next/link";
 
-export default function Form() {
+export default function Form({setVerify}) {
+
   return (
     <Stack
       justifyContent={"center"}
@@ -40,7 +41,7 @@ export default function Form() {
             details.
           </p>
         </Stack>
-        <SignInForm />
+        <SignInForm setVerify={setVerify} />
         <Stack
           direction={"row"}
           justifyContent={"space-between"}
@@ -59,7 +60,7 @@ export default function Form() {
             }}
           />
         </Stack>
-        <SignUpForm />
+        <SignUpForm setVerify={setVerify} />
         <p
           style={{
             fontSize: "12px",

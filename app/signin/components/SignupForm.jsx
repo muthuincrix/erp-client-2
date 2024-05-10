@@ -3,9 +3,30 @@ import CustomeButton from "@/app/components/CustomeButton";
 import CustomeTextField from "@/app/components/CustomeTextField";
 import atIcon from "../../../public/icons/at.png";
 import userIcon from "../../../public/icons/user.png";
+import { useState } from "react";
 
-export default function SignUpForm() {
-  
+export default function SignUpForm({setVerify}) {
+  const [email,setEmail] = useState('')
+  const [name,setName] = useState('')
+  const handlerCreateAccount = () => {
+    fetch('/user/create-user',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name,email
+      })
+    })
+    .then(res => res.json())
+    .then(data =>{
+      console.log(data)
+      if(data.status =='success') return setVerify(true)
+      if(data.status == "info") return setVerify(false)
+      if(data.status == "error") return setVerify(false)
+    })
+    
+  }
   return (
     <Stack gap={2}>
       <CustomeTextField
@@ -18,6 +39,7 @@ export default function SignUpForm() {
         }}
         fullWidth={true}
         smoothCorners={18}
+        onChange={(e) => setName(e.target.value)}
         // width={"300px"}
         height={50}
         placeholder="Enter your name"
@@ -30,7 +52,7 @@ export default function SignUpForm() {
             </InputAdornment>
           ),
         }}
-        onChange={(e) => console.log(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
         fullWidth={true}
         smoothCorners={18}
         // width={"300px"}
@@ -43,6 +65,7 @@ export default function SignUpForm() {
         backgroundColor={"#0080FF"}
         height={"50px"}
         // width={"300px"}
+        onClick ={handlerCreateAccount}
       >
         Create an account
       </CustomeButton>
