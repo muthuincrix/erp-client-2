@@ -1,11 +1,12 @@
 "use client";
 import { Stack, Typography, Popover } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CustomeStack from "@/app/components/CustomeStack";
 import Avatar from "@/util/avatar";
 import NavButton from "./NavButton";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
+import { SmoothCorners } from "react-smooth-corners";
 
 export default function UserInfoButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,13 +66,16 @@ export default function UserInfoButton() {
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        // sx={{
-        //   "&.MuiPaper-root":{
-        //     background: "red !important",
-        //     color:"red !important",
-        //     backgroundColor: "red !important",
-        //   }
-        // }}
+        slotProps={{
+          paper: {
+            sx: {
+              borderRadius: "10px",
+              "--smooth-corners": 12,
+              maskImage: "paint(smooth - corners)",
+              "-webkit-mask-image": "paint(smooth-corners)",
+            },
+          },
+        }}
         anchorOrigin={{
           vertical: "top",
           horizontal: "center",
@@ -94,6 +98,7 @@ export default function UserInfoButton() {
             height: "auto",
           }}
         >
+          <SmoothCorners style={{ display: "none" }} />
           <NavButton
             isLight={true}
             icon={
