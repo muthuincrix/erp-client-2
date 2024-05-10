@@ -22,7 +22,8 @@ export default function OtpForm() {
     })
       .then((res) => res.json())
       .then((data) => {
-       if(data.status === "success" && !data.fill_the_details) return router.push('/setup')
+        console.log(data);
+       if(data.status === "success" && data.fill_the_details == false )  return router.push('/setup')
        if(data.status ===  'success' && data.type == 'create') return router.push('/setup')
        if(data.status == "success" && !data.type ) return router.push('/dashboard')
         

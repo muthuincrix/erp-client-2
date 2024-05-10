@@ -1,17 +1,33 @@
+"use client";
 import { Stack } from "@mui/material";
 import SideNavBar from "./components/SideNavBar";
 import TopNavBar from "./components/TopNavBar";
-
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 export default function DashboardLayout({ children }) {
+  const router = useRouter();
+  const [isLoading, setLoading] = useState(false);
+  useEffect(() => {
+    fetch("/user-isLogin")
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.fill_the_details)  return router.push("/setup");
+        if (data.status === "error" && !data.isLogin )
+          return router.push("/signin");
+        setLoading(true);
+      });
+  }, []);
   return (
-    <main>
-      <Stack direction={"row"} width={"100vw"} height={"100dvh"}>
-        <SideNavBar />
-        <Stack>
-          <TopNavBar />
-          {children}
+    isLoading && (
+      <main>
+        <Stack direction={"row"} width={"100vw"} height={"100dvh"}>
+          <SideNavBar />
+          <Stack>
+            <TopNavBar />
+            {children}
+          </Stack>
         </Stack>
-      </Stack>
-    </main>
+      </main>
+    )
   );
 }
