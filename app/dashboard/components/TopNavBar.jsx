@@ -1,24 +1,25 @@
 "use client";
-import { Stack, IconButton, Breadcrumbs, Typography } from "@mui/material";
-import CustomeButton from "@/app/components/CustomeButton";
+import {
+  Stack,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import { useRouter } from "next/navigation";
 import KeyboardBackspaceRoundedIcon from "@mui/icons-material/KeyboardBackspaceRounded";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import NotificationsSharpIcon from "@mui/icons-material/NotificationsSharp";
+import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
+
+import BreadcrumbsMap from "./BreadcrumbsMap";
+import MasterAddButton from "./MasterAddButton";
 
 export default function TopNavBar() {
   const router = useRouter();
-
-  console.log(window.history.state);
-  const breadcrumbs = [
-    <Typography color={"black"}>Dashboard</Typography>,
-    <Typography color={"black"}>Dashboard</Typography>,
-  ];
+ 
   return (
     <Stack
-      margin={"20px"}
-      p={2}
+      margin={"20px 0 0 0"}
       width={"100%"}
-      // sx={{ backgroundColor: "red" }}
+      direction={"row"}
       justifyContent={"space-between"}
       alignItems={"center"}
     >
@@ -36,17 +37,45 @@ export default function TopNavBar() {
             />
           </IconButton>
         </Stack>
-        <Stack>
-          <Breadcrumbs
-            separator={
-              <NavigateNextIcon fontSize="small" style={{ color: "#888888" }} />
-            }
-            aria-label="breadcrumb"
-          >
-            {breadcrumbs}
-          </Breadcrumbs>
+        <BreadcrumbsMap />
+      </Stack>
+      <Stack
+        direction={"row"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        gap={2}
+      >
+        <MasterAddButton />
+        <IconButton
+          sx={{
+            backgroundColor: "#0080FF",
+            "&:hover": {
+              backgroundColor: "#0080FF",
+            },
+          }}
+        >
+          <NotificationsSharpIcon style={{ color: "white" }} />
+        </IconButton>
+        <Stack
+          direction={"row"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
+          <Typography fontSize={"16px"} fontWeight={"500"}>
+            Incrix Techlutions LLP
+          </Typography>
+          <KeyboardArrowDownRoundedIcon
+            sx={{
+              // color: "white",
+              // transform: open ? "rotate(180deg)" : "rotate(00deg)",
+              marginLeft: "auto",
+              fontSize: "26px",
+              // transition: "all 0.25s ease-out",
+            }}
+          />
         </Stack>
       </Stack>
     </Stack>
   );
 }
+

@@ -7,7 +7,7 @@ export default function DashboardLayout({ children }) {
     <main>
       <Stack direction={"row"} width={"100vw"} height={"100dvh"}>
         <SideNavBar />
-        <Stack>
+        <Stack width={"calc(100% - 300px)"} p={2}>
           <TopNavBar />
           {children}
         </Stack>
