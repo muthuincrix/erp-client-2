@@ -6,11 +6,11 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import KeyboardBackspaceRoundedIcon from "@mui/icons-material/KeyboardBackspaceRounded";
-import NotificationsSharpIcon from "@mui/icons-material/NotificationsSharp";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 
 import BreadcrumbsMap from "./BreadcrumbsMap";
 import MasterAddButton from "./MasterAddButton";
+import NotificationButton from "./NotificationButton";
 
 export default function TopNavBar() {
   const router = useRouter();
@@ -51,16 +51,7 @@ export default function TopNavBar() {
         gap={2}
       >
         <MasterAddButton />
-        <IconButton
-          sx={{
-            backgroundColor: "#0080FF",
-            "&:hover": {
-              backgroundColor: "#0080FF",
-            },
-          }}
-        >
-          <NotificationsSharpIcon style={{ color: "white" }} />
-        </IconButton>
+        <NotificationButton />
         <Stack
           direction={"row"}
           justifyContent={"space-between"}

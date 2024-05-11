@@ -10,40 +10,56 @@ import ecomIcon from "@/public/icons/ecom-icon.svg";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 
+function SvgImage(props){
+  const { color, width, height, src } = props;
+  return (
+    <div
+      className="icon"
+      style={{
+        width: width ? width : "20px",
+        height: height ? height : "20px",
+        mask: `url(${src})`,
+        "-webkit-mask": `url(${src})`,
+        backgroundColor: color ? color : "#0080FF",
+      }}
+    />
+  );
+}
+
 function DashIcon(props) {
-  return <img {...props} src={dashIcon.src} alt="dash-icon" />;
+  return <SvgImage {...props} src={dashIcon.src} />
 }
 
 function ProductIcon(props) {
-  return <img {...props} src={productIcon.src} alt="product-icon" />;
+  return <SvgImage {...props} src={productIcon.src} />
 }
 
 function InvoiceIcon(props) {
-  return <img {...props} src={invoiceIcon.src} alt="invoice-icon" />;
+  return <SvgImage {...props} src={invoiceIcon.src} />
 }
 
 function CustomerIcon(props) {
-  return <img {...props} src={customerIcon.src} alt="customer-icon" />;
+  return <SvgImage {...props} src={customerIcon.src} />
 }
 
 function VendorIcon(props) {
-  return <img {...props} src={vendorIcon.src} alt="vendor-icon" />;
+  return <SvgImage {...props} src={vendorIcon.src} />
 }
 
 function PurchaseIcon(props) {
-  return <img {...props} src={purchaseIcon.src} alt="purchase-icon" />;
+  return <SvgImage {...props} src={purchaseIcon.src} />
 }
 
 function PaymentIcon(props) {
-  return <img {...props} src={paymentIcon.src} alt="payment-icon" />;
+  return <SvgImage {...props} src={paymentIcon.src} />
 }
 
 function ReportIcon(props) {
-  return <img {...props} src={reportIcon.src} alt="report-icon" />;
+  return <SvgImage {...props} src={reportIcon.src} />
 }
 
 function EcomIcon(props) {
-  return <img {...props} src={ecomIcon.src} alt="ecom-icon" />;
+  return <SvgImage {...props} src={ecomIcon.src} />
 }
 
 function SettingsIcon(props) {
