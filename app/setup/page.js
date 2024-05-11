@@ -10,7 +10,7 @@ export default function Page(){
     const router = useRouter();
     const [isLoading, setLoading] = useState(false)
     useEffect(() =>{
-      fetch('/user-isLogin')
+      fetch('/api/user-isLogin')
       .then((response) => response.json())
       .then((data) => {
           if(data.status === 'success' && data.fill_the_details) return setLoading(true)

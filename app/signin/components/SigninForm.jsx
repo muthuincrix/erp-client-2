@@ -10,7 +10,7 @@ export default function SignInForm({setVerify}) {
   const [email, setEmail] = useState("");
   const handlerVerify = () => {
     if (email.length > 0)
-      fetch("/user/login", {
+      fetch("/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

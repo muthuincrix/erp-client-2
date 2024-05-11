@@ -11,7 +11,7 @@ export default function OtpForm() {
   const router = useRouter();
   const handlerVerify = () => {
     if (otp.length <= 0) return
-    fetch("/user/otp-verify", {
+    fetch("/api/user/otp-verify", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export default function OtpForm() {
       });
   };
   const resendOtp =() =>{
-    fetch("/user/resend-otp", {
+    fetch("/api/user/resend-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

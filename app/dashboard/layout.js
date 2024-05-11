@@ -8,7 +8,7 @@ export default function DashboardLayout({ children }) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
-    fetch("/user-isLogin")
+    fetch("/api/user-isLogin")
       .then((response) => response.json())
       .then((data) => {
         if(data.fill_the_details)  return router.push("/setup");
