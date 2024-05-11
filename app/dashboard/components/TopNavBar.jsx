@@ -6,11 +6,12 @@ import {
 } from "@mui/material";
 import { useRouter } from "next/navigation";
 import KeyboardBackspaceRoundedIcon from "@mui/icons-material/KeyboardBackspaceRounded";
-import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
+
 
 import BreadcrumbsMap from "./BreadcrumbsMap";
 import MasterAddButton from "./MasterAddButton";
 import NotificationButton from "./NotificationButton";
+import ManageBusiness from "./ManageBusiness";
 
 export default function TopNavBar() {
   const router = useRouter();
@@ -50,26 +51,9 @@ export default function TopNavBar() {
         alignItems={"center"}
         gap={2}
       >
+        <ManageBusiness />
         <MasterAddButton />
         <NotificationButton />
-        <Stack
-          direction={"row"}
-          justifyContent={"space-between"}
-          alignItems={"center"}
-        >
-          <Typography fontSize={"16px"} fontWeight={"500"}>
-            Incrix Techlutions LLP
-          </Typography>
-          <KeyboardArrowDownRoundedIcon
-            sx={{
-              // color: "white",
-              // transform: open ? "rotate(180deg)" : "rotate(00deg)",
-              marginLeft: "auto",
-              fontSize: "26px",
-              // transition: "all 0.25s ease-out",
-            }}
-          />
-        </Stack>
       </Stack>
     </Stack>
   );
