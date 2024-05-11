@@ -9,7 +9,7 @@ export default function SignUpForm({setVerify}) {
   const [email,setEmail] = useState('')
   const [name,setName] = useState('')
   const handlerCreateAccount = () => {
-    fetch('/user/create-user',{
+    fetch('/api/user/create-user',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
