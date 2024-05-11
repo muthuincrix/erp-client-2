@@ -54,30 +54,34 @@ export default function NotificationButton() {
               "--smooth-corners": 15,
               maskImage: "paint(smooth - corners)",
               borderRadius: "10px",
-            //   "-webkit-mask-image": "paint(smooth-corners)",
+              //   "-webkit-mask-image": "paint(smooth-corners)",
             },
           },
         }}
       >
         <SmoothCorners style={{ display: "none" }} />
-        <Stack direction={"row"} gap={1} >
-        <NotificationsSharpIcon style={{ color: "#97A1B1" }} /> 
-        <Typography color={"#97A1B1"} fontWeight={600}>
-          Notifications
+        <Stack direction={"row"} gap={1}>
+          <NotificationsSharpIcon style={{ color: "#97A1B1" }} />
+          <Typography color={"#97A1B1"} fontWeight={600}>
+            Notifications
           </Typography>
         </Stack>
-          <hr
-            style={{
-              width: "100%",
-              height: "1px",
-              backgroundColor: "#F6F6F6",
-              marginTop: "10px",
-              marginBottom: "10px",
-              border: "none",
-              
-            }}
-          />
-          <CustomeStack smoothCorners ="32" background="#F8F8F8" width="100%" height="523px"></CustomeStack>
+        <hr
+          style={{
+            width: "100%",
+            height: "1px",
+            backgroundColor: "#F6F6F6",
+            marginTop: "10px",
+            marginBottom: "10px",
+            border: "none",
+          }}
+        />
+        <CustomeStack
+          smoothCorners="32"
+          background="#F8F8F8"
+          width="100%"
+          height="523px"
+        ></CustomeStack>
       </Popover>
     </Stack>
   );

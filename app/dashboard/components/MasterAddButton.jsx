@@ -1,4 +1,4 @@
-import { Stack, Typography, Popover, Grid } from "@mui/material";
+import { Stack, Popover, Grid } from "@mui/material";
 import CustomeButton from "@/app/components/CustomeButton";
 import { useState } from "react";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
@@ -36,11 +36,11 @@ export default function MasterAddButton() {
         onClose={handleClose}
         anchorOrigin={{
           vertical: "bottom",
-          horizontal: "center",
+          horizontal: "right",
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "center",
+          horizontal: "right",
         }}
         slotProps={{
           paper: {
