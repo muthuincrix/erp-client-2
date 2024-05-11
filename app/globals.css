@@ -18,6 +18,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
-.otp{
-  
+.icon{
+  mask-size: 100% !important;
+  -webkit-mask-repeat: no-repeat !important;
+  mask-repeat: no-repeat !important;
+  mask-position: center !important;
 }

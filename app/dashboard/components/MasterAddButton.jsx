@@ -1,8 +1,10 @@
-import { Stack, Typography, Popover } from "@mui/material";
+import { Stack, Typography, Popover, Grid } from "@mui/material";
 import CustomeButton from "@/app/components/CustomeButton";
 import { useState } from "react";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 import { SmoothCorners } from "react-smooth-corners";
+import NavButton from "./NavButton";
+import Icons from "@/util/icons";
 
 export default function MasterAddButton() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -13,7 +15,6 @@ export default function MasterAddButton() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -46,16 +47,53 @@ export default function MasterAddButton() {
             sx: {
               borderRadius: "10px",
               "--smooth-corners": 12,
-              backgroundColor: "#888888",
+              backgroundColor: "#F8F8F8",
               maskImage: "paint(smooth - corners)",
               "-webkit-mask-image": "paint(smooth-corners)",
-              marginTop: "10px"
+              marginTop: "10px",
+              p: 2,
             },
           },
         }}
       >
         <SmoothCorners style={{ display: "none" }} />
-        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+
+        <Grid container spacing={1}>
+          <Grid item xs={6}>
+            <NavButton
+              isLight={true}
+              title={"Invoice"}
+              icon={<Icons.InvoiceIcon />}
+            />
+            <NavButton
+              isLight={true}
+              title={"Product"}
+              icon={<Icons.ProductIcon />}
+            />
+            <NavButton
+              isLight={true}
+              title={"Payment"}
+              icon={<Icons.PaymentIcon />}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <NavButton
+              isLight={true}
+              title={"Customer"}
+              icon={<Icons.CustomerIcon />}
+            />
+            <NavButton
+              isLight={true}
+              title={"Vendor"}
+              icon={<Icons.VendorIcon />}
+            />
+            <NavButton
+              isLight={true}
+              title={"Purchase"}
+              icon={<Icons.PurchaseIcon />}
+            />
+          </Grid>
+        </Grid>
       </Popover>
     </Stack>
   );

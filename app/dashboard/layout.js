@@ -4,11 +4,12 @@ import SideNavBar from "./components/SideNavBar";
 import TopNavBar from "./components/TopNavBar";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import "../globals.css";
 export default function DashboardLayout({ children }) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
-    fetch("/user-isLogin")
+    fetch("/api/user-isLogin")
       .then((response) => response.json())
       .then((data) => {
         if(data.fill_the_details)  return router.push("/setup");
@@ -16,7 +17,8 @@ export default function DashboardLayout({ children }) {
           return router.push("/signin");
         setLoading(true);
       });
-  }, []);
+
+  },[]);
   return (
     isLoading && (
       <main>
