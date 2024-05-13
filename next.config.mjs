@@ -6,7 +6,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://localhost:3333/:path*",
+        destination:process.env.NODE_ENV !== "development" ? "https://8627zwmrja.execute-api.ap-south-1.amazonaws.com/:path*" : "http://localhost:3333/:path*",
       },
     ]
     },
