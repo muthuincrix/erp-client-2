@@ -63,34 +63,34 @@ export default function MasterAddButton() {
             <NavButton
               isLight={true}
               title={"Invoice"}
-              icon={<Icons.InvoiceIcon />}
+              icon={<Icons.InvoiceIcon color="#97A1B1" />}
             />
             <NavButton
               isLight={true}
               title={"Product"}
-              icon={<Icons.ProductIcon />}
+              icon={<Icons.ProductIcon color="#97A1B1" />}
             />
             <NavButton
               isLight={true}
               title={"Payment"}
-              icon={<Icons.PaymentIcon />}
+              icon={<Icons.PaymentIcon color="#97A1B1" />}
             />
           </Grid>
           <Grid item xs={6}>
             <NavButton
               isLight={true}
               title={"Customer"}
-              icon={<Icons.CustomerIcon />}
+              icon={<Icons.CustomerIcon color="#97A1B1" />}
             />
             <NavButton
               isLight={true}
               title={"Vendor"}
-              icon={<Icons.VendorIcon />}
+              icon={<Icons.VendorIcon color="#97A1B1" />}
             />
             <NavButton
               isLight={true}
               title={"Purchase"}
-              icon={<Icons.PurchaseIcon />}
+              icon={<Icons.PurchaseIcon color="#97A1B1" />}
             />
           </Grid>
         </Grid>

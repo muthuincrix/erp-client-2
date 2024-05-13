@@ -55,7 +55,7 @@ export default function NavButton({
           variant="p"
           fontSize={"13px"}
           sx={{
-            color: isLight? "#82878C" : "white",
+            color: isLight? "#97A1B1" : "white",
             fontWeight: isLight? "600" : "400",
           }}
         >

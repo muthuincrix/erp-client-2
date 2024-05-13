@@ -1,14 +1,25 @@
 import { Stack, Typography, Popover, IconButton } from "@mui/material";
 import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SmoothCorners } from "react-smooth-corners";
 import CustomeStack from "@/app/components/CustomeStack";
 import CustomeButton from "@/app/components/CustomeButton";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { increment } from "@/redux/features/stateCheckSlice";
+
 export default function ManageBusiness() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const counter = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(counter);
+  }, [counter]);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -33,7 +44,7 @@ export default function ManageBusiness() {
         onClick={handleClick}
       >
         <Typography fontSize={"16px"} fontWeight={"500"}>
-          Incrix Techlutions LLP
+          Incrix Techlutions LLP{counter}
         </Typography>
         <KeyboardArrowDownRoundedIcon
           sx={{
@@ -74,7 +85,7 @@ export default function ManageBusiness() {
         }}
       >
         <SmoothCorners style={{ display: "none" }} />
-        <OrgButton isSelected={true} />
+        <OrgButton isSelected={true} onClick={() => dispatch(increment())} />
         <hr
           style={{
             width: "100%",
@@ -98,15 +109,16 @@ export default function ManageBusiness() {
   );
 }
 
-function OrgButton({ isSelected }) {
+function OrgButton({ isSelected, onClick }) {
   return (
     <CustomeStack
+      onClick={onClick}
       smoothCorners="18"
       width="100%"
       padding="10px 20px"
-      backgroundColor={isSelected ? "rgba(130,135,140,20%)" : null}
+      backgroundColor={isSelected ? "rgba(130,135,140,10%)" : null}
       sx={{
-        borderRadius: "10px"
+        borderRadius: "10px",
       }}
     >
       <Stack>

@@ -104,7 +104,7 @@ export default function UserInfoButton() {
             icon={
               <SettingsRoundedIcon
                 sx={{
-                  color: "#82878C",
+                  color: "#97A1B1",
                 }}
               />
             }
@@ -123,7 +123,7 @@ export default function UserInfoButton() {
             icon={
               <LogoutRoundedIcon
                 sx={{
-                  color: "#82878C",
+                  color: "#97A1B1",
                 }}
               />
             }
