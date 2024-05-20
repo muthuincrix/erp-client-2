@@ -10,10 +10,12 @@ const nextConfig = {
    skipTrailingSlashRedirect: true,
   async rewrites() {
     return [
-      {
-        source: "/api/:path*",
-        destination:process.env.NODE_ENV !== "development" ? "https://8627zwmrja.execute-api.ap-south-1.amazonaws.com/:path*" : "http://localhost:3333/:path*",
-      },
+      // {
+      //   source: "/api/:path*",
+      //   destination:process.env.NODE_ENV !== "development" ? "https://erp-server-zeta.vercel.app/:path*" : "http://localhost:3333/:path*",
+      // },
+     { source:"/api/:path*",
+      destination:"https://erp-server-zeta.vercel.app/:path*" }
     ]
     },
   reactStrictMode: true, // Enable React strict mode for improved error handling

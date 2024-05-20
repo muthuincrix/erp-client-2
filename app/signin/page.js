@@ -11,7 +11,7 @@ export default function SignIn() {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false)
   useEffect(() =>{
-    fetch(`${url}/user-isLogin`)
+    fetch(`/api/user-isLogin`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
