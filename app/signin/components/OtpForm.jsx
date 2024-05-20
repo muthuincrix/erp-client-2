@@ -5,13 +5,13 @@ import React, { useState, } from "react";
 import { useRouter } from 'next/navigation'
 import { Stack, Button } from "@mui/material";
 import CustomeButton from "@/app/components/CustomeButton";
-
+import url from "../../../utils/url"
 export default function OtpForm() {
   const [otp, setOtp] = useState("");
   const router = useRouter();
   const handlerVerify = () => {
     if (otp.length <= 0) return
-    fetch("/api/user/otp-verify", {
+    fetch(`${url}/user/otp-verify`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

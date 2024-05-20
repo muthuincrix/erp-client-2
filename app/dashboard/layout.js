@@ -5,11 +5,12 @@ import TopNavBar from "./components/TopNavBar";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "../globals.css";
+import url from '../../util/url'
 export default function DashboardLayout({ children }) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
-    fetch("/api/user-isLogin")
+    fetch(`${url}/user-isLogin`)
       .then((response) => response.json())
       .then((data) => {
         if(data.fill_the_details)  return router.push("/setup");
