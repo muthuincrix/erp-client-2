@@ -4,7 +4,7 @@ import CustomeButton from "@/app/components/CustomeButton";
 import CustomeTextField from "@/app/components/CustomeTextField";
 import atIcon from "../../../public/icons/at.png";
 import { useState } from "react";
-import url from '../../../utils/url'
+import url from '../../../util/url'
 export default function SignInForm({setVerify}) {
  
   const [email, setEmail] = useState("");

@@ -5,7 +5,7 @@ import React, { useState, } from "react";
 import { useRouter } from 'next/navigation'
 import { Stack, Button } from "@mui/material";
 import CustomeButton from "@/app/components/CustomeButton";
-import url from "../../../utils/url"
+import url from "../../../util/url"
 export default function OtpForm() {
   const [otp, setOtp] = useState("");
   const router = useRouter();
