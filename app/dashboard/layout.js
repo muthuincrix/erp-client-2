@@ -5,6 +5,7 @@ import TopNavBar from "./components/TopNavBar";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "../globals.css";
+import AlertComp from "../components/AlertComp";
 
 import { Provider } from "react-redux";
 import store from "@/redux/store";
@@ -27,6 +28,7 @@ export default function DashboardLayout({ children }) {
       <Provider store={store}>
         <main>
           <Stack direction={"row"} width={"100vw"} height={"100dvh"}>
+            <AlertComp />
             <SideNavBar />
             <Stack width={"calc(100% - 300px)"} p={2}>
               <TopNavBar />

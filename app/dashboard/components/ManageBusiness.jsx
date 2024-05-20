@@ -7,18 +7,12 @@ import CustomeStack from "@/app/components/CustomeStack";
 import CustomeButton from "@/app/components/CustomeButton";
 import AddSharpIcon from "@mui/icons-material/AddSharp";
 
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { increment } from "@/redux/features/stateCheckSlice";
+import { setAlert } from "@/redux/features/alertSlice";
 
 export default function ManageBusiness() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const counter = useSelector((state) => state.counter);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log(counter);
-  }, [counter]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -44,7 +38,7 @@ export default function ManageBusiness() {
         onClick={handleClick}
       >
         <Typography fontSize={"16px"} fontWeight={"500"}>
-          Incrix Techlutions LLP{counter}
+          Incrix Techlutions LLP
         </Typography>
         <KeyboardArrowDownRoundedIcon
           sx={{
@@ -85,7 +79,19 @@ export default function ManageBusiness() {
         }}
       >
         <SmoothCorners style={{ display: "none" }} />
-        <OrgButton isSelected={true} onClick={() => dispatch(increment())} />
+        <OrgButton
+          isSelected={true}
+          onClick={() => {
+            dispatch(
+              setAlert({
+                title: "Opened Successfully",
+                open: true,
+                message:"lorem ipsum dolor sit amet, consectetur",
+                severity: "error",
+              })
+            );
+          }}
+        />
         <hr
           style={{
             width: "100%",
@@ -129,7 +135,7 @@ function OrgButton({ isSelected, onClick }) {
           <Typography fontSize={"12px"} fontWeight={"500"} color={"#97A1B1"}>
             Business ID: {"66846846464684"}
           </Typography>
-          <IconButton>
+          <IconButton onClick={()=>{}}>
             <ContentCopyIcon
               sx={{
                 width: "16px",

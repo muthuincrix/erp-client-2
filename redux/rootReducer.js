@@ -1,8 +1,7 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import counterReducer from './features/stateCheckSlice';
-
+import { combineReducers } from "@reduxjs/toolkit";
+import alertReducer from "./features/AlertSlice";
 
 const rootReducer = combineReducers({
-    counter: counterReducer,
-  });
-  export default rootReducer;
+  alert: alertReducer,
+});
+export default rootReducer;
