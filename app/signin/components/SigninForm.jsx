@@ -4,14 +4,15 @@ import CustomeButton from "@/app/components/CustomeButton";
 import CustomeTextField from "@/app/components/CustomeTextField";
 import atIcon from "../../../public/icons/at.png";
 import { useState } from "react";
-
+import url from "../../../util/url"
 export default function SignInForm({setVerify}) {
  
   const [email, setEmail] = useState("");
   const handlerVerify = () => {
     if (email.length > 0)
-      fetch("/api/user/login", {
+      fetch(`${url}/user/login`, {
         method: "POST",
+        credentials:"include",
         headers: {
           "Content-Type": "application/json",
         },

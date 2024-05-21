@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "../globals.css";
 import AlertComp from "../components/AlertComp";
-
+import url from "../../util/url"
 import { Provider } from "react-redux";
 import store from "@/redux/store";
 
@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }) {
   const router = useRouter();
   const [isLoading, setLoading] = useState(false);
   useEffect(() => {
-    fetch("/api/user-isLogin")
+    fetch(`${url}/user-isLogin`,{ credentials:"include",})
       .then((response) => response.json())
       .then((data) => {
         if (data.fill_the_details) return router.push("/setup");

@@ -5,12 +5,16 @@ import Features from "./components/Features";
 import VerifyForm from "./components/VerifyForm";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
+import url from "../../util/url"
 export default function SignIn() {
   const [isVerify, setVerify] = useState(false);
   const router = useRouter();
   const [isLoading, setLoading] = useState(false)
   useEffect(() =>{
-    fetch('/api/user-isLogin')
+    fetch(`${url}/user-isLogin`,{
+   method:"GET",
+   credentials:"include"
+    })
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
